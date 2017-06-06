@@ -1,8 +1,17 @@
 def translate(string)
   vowels = ["a", "e", "i", "o", "u"]
+  words = string.split
+  new_words = []
 
-  until vowels.include? string[0]
-    string << string.slice!(0)
+  words.each do |word|
+    until vowels.include? word[0]
+      if word[0..1] == "qu"
+        word << word.slice!(0..1)
+      else
+        word << word.slice!(0)
+      end
+    end
+    new_words << word + "ay"
   end
-    string + "ay"
+  new_words.join(" ")
 end
